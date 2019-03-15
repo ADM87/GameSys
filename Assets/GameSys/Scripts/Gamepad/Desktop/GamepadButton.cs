@@ -2,9 +2,11 @@
 
 namespace GameSys.Gamepad
 {
-    public class GamepadButton : GamepadControl,
-        IGamepadButton
+    public class GamepadButton :
+        IGamepadControl, IGamepadButton
     {
+        public event GamepadControlChangeEvent GamepadControlChange;
+
         public AxisType Axis { get; private set; }
 
         public string AxisName { get; private set; }
@@ -20,7 +22,12 @@ namespace GameSys.Gamepad
             Value = 0;
         }
 
-        public override void Poll()
+        public void ControlChanged(AxisType axisType, float before, float after)
+        {
+            GamepadControlChange?.Invoke(axisType, before, after);
+        }
+
+        public void Poll()
         {
             float oldValue = Value;
 

@@ -2,9 +2,11 @@
 
 namespace GameSys.Gamepad
 {
-    public class GamepadJoystick : GamepadControl,
-        IGamepadJoystick
+    public class GamepadJoystick : 
+        IGamepadControl, IGamepadJoystick
     {
+        public event GamepadControlChangeEvent GamepadControlChange;
+
         public AxisType XAxis { get; private set; }
         public AxisType YAxis { get; private set; }
 
@@ -30,7 +32,12 @@ namespace GameSys.Gamepad
             Y = 0;
         }
 
-        public override void Poll()
+        public void ControlChanged(AxisType axisType, float before, float after)
+        {
+            GamepadControlChange?.Invoke(axisType, before, after);
+        }
+
+        public void Poll()
         {
             float oldX = X;
             float oldY = Y;

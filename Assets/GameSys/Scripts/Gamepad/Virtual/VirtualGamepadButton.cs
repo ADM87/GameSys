@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 namespace GameSys.Gamepad
 {
-    public class VirtualGamepadButton : VirtualGamepadControl,
-        IGamepadButton
+    public class VirtualGamepadButton : MonoBehaviour,
+        IGamepadControl, IGamepadButton
     {
+        public event GamepadControlChangeEvent GamepadControlChange;
+
         [SerializeField]
         private AxisType axis;
         public AxisType Axis { get { return axis; } }
@@ -78,6 +80,13 @@ namespace GameSys.Gamepad
                 OnControlDown(null);
             }
 #endif
+        }
+
+        public void Poll() { }
+
+        public void ControlChanged(AxisType axisType, float before, float after)
+        {
+            GamepadControlChange?.Invoke(axisType, before, after);
         }
     }
 }

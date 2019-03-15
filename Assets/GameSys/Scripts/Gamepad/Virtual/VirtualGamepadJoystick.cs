@@ -4,9 +4,11 @@ using UnityEngine.UI;
 namespace GameSys.Gamepad
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public class VirtualGamepadJoystick : VirtualGamepadControl,
-        IGamepadJoystick
+    public class VirtualGamepadJoystick : MonoBehaviour,
+        IGamepadControl, IGamepadJoystick
     {
+        public event GamepadControlChangeEvent GamepadControlChange;
+
         [SerializeField, Range(1f, 600f)]
         private float controlThreshold = 1f;
         public float ControlThreshold { get { return controlThreshold; } }
@@ -129,6 +131,13 @@ namespace GameSys.Gamepad
             {
                 ControlChanged(yAxis, oldY, Y);
             }
+        }
+
+        public void Poll() { }
+
+        public void ControlChanged(AxisType axisType, float before, float after)
+        {
+            GamepadControlChange?.Invoke(axisType, before, after);
         }
     }
 }
