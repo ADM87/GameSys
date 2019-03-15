@@ -10,6 +10,9 @@ namespace GameSys.Gamepad
         private bool usePhysicalGamepad;
 
         [SerializeField]
+        private GamepadMapping mapping;
+
+        [SerializeField]
         private AxisType[] debugAxes;
 
         [SerializeField]
@@ -24,6 +27,8 @@ namespace GameSys.Gamepad
         private void Start()
         {
             debugGamepad = new Gamepad();
+            debugGamepad.ApplyMapping(mapping);
+
             debugText = new Dictionary<AxisType, string>();
 
             if (virtualGamepad != null)

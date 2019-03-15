@@ -55,5 +55,17 @@ namespace GameSys.Gamepad
                 ControlChanged(YAxis, oldY, Y);
             }
         }
+
+        public void MapControl(GamepadMapping.MappingEntry mapping)
+        {
+            if (mapping.GamepadAxis == XAxis)
+            {
+                XAxisName = mapping.InputAxis;
+            }
+            else if (mapping.GamepadAxis == YAxis)
+            {
+                YAxisName = mapping.InputAxis;
+            }
+        }
     }
 }

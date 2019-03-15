@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230406eca4f5ff147aaff5580a72ae2d, type: 3}
+  m_Name: GamepadMapping
+  m_EditorClassIdentifier: 
+  entries:
+  - gamepadAxis: 0
+    inputAxis: Xbox_LeftJoystickX
+  - gamepadAxis: 1
+    inputAxis: Xbox_LeftJoystickY
+  - gamepadAxis: 2
+    inputAxis: Xbox_RightJoystickX
+  - gamepadAxis: 3
+    inputAxis: Xbox_RightJoystickY
+  - gamepadAxis: 10
+    inputAxis: Xbox_Button01
+  - gamepadAxis: 12
+    inputAxis: Xbox_Button03
+  - gamepadAxis: 11
+    inputAxis: Xbox_Button02
+  - gamepadAxis: 13
+    inputAxis: Xbox_Button04

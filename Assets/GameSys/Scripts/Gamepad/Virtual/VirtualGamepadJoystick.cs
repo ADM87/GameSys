@@ -37,8 +37,8 @@ namespace GameSys.Gamepad
         
         public Vector2 Delta { get { return new Vector2(X, Y); } }
 
-        public string XAxisName { get { return xAxis.ToString(); } }
-        public string YAxisName { get { return yAxis.ToString(); } }
+        public string XAxisName { get; private set; }
+        public string YAxisName { get; private set; }
 
         private CanvasGroup canvasGroup;
         private float targetVisibility = 0f;
@@ -48,6 +48,9 @@ namespace GameSys.Gamepad
         {
             canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.alpha = targetVisibility;
+
+            XAxisName = xAxis.ToString();
+            YAxisName = yAxis.ToString();
         }
 
         private void Update()
@@ -138,6 +141,18 @@ namespace GameSys.Gamepad
         public void ControlChanged(AxisType axisType, float before, float after)
         {
             GamepadControlChange?.Invoke(axisType, before, after);
+        }
+
+        public void MapControl(GamepadMapping.MappingEntry mapping)
+        {
+            if (mapping.GamepadAxis == xAxis)
+            {
+                XAxisName = mapping.InputAxis;
+            }
+            else if (mapping.GamepadAxis == yAxis)
+            {
+                YAxisName = mapping.InputAxis;
+            }
         }
     }
 }

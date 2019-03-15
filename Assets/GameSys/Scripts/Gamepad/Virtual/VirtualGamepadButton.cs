@@ -17,7 +17,7 @@ namespace GameSys.Gamepad
         [SerializeField]
         private Image graphic;
 
-        public string AxisName { get { return axis.ToString(); } }
+        public string AxisName { get; private set; }
 
         public float Value { get; private set; }
 
@@ -29,6 +29,8 @@ namespace GameSys.Gamepad
             eventTrigger = gameObject.AddComponent<EventTrigger>();
             AddEvent(EventTriggerType.PointerDown, OnControlDown);
             AddEvent(EventTriggerType.PointerUp, OnControlUp);
+
+            AxisName = axis.ToString();
         }
 
         private void Update()
@@ -87,6 +89,11 @@ namespace GameSys.Gamepad
         public void ControlChanged(AxisType axisType, float before, float after)
         {
             GamepadControlChange?.Invoke(axisType, before, after);
+        }
+
+        public void MapControl(GamepadMapping.MappingEntry mapping)
+        {
+            AxisName = mapping.InputAxis;
         }
     }
 }

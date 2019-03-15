@@ -5,7 +5,6 @@ namespace GameSys.Gamepad
     public interface IGamepad
     {
         IGamepadJoystick LeftJoystick { get; }
-        IGamepadJoystick RightJoystick { get; }
 
         IGamepadButton Button01 { get; }
         IGamepadButton Button02 { get; }

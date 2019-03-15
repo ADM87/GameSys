@@ -37,6 +37,18 @@ namespace GameSys.Gamepad
             };
         }
 
+        public void ApplyMapping(GamepadMapping mapping)
+        {
+            for (int i = 0; i < mapping.Entries.Length; ++i)
+            {
+                IGamepadControl control;
+                if (ControlMap.TryGetValue(mapping.Entries[i].GamepadAxis, out control))
+                {
+                    control.MapControl(mapping.Entries[i]);
+                }
+            }
+        }
+
         public void PollInput()
         {
             LeftJoystick.Poll();

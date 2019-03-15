@@ -40,6 +40,7 @@ namespace GameSys.Gamepad
 
         void Poll();
         void ControlChanged(AxisType axisType, float before, float after);
+        void MapControl(GamepadMapping.MappingEntry mapping);
     }
 
     public interface IGamepadButton : IGamepadControl

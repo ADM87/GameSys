@@ -38,5 +38,10 @@ namespace GameSys.Gamepad
                 ControlChanged(Axis, oldValue, Value);
             }
         }
+
+        public void MapControl(GamepadMapping.MappingEntry mapping)
+        {
+            AxisName = mapping.InputAxis;
+        }
     }
 }
