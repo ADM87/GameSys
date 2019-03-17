@@ -28,8 +28,6 @@ namespace GameSystems
             Assets = AssetLoader.Create();
             Scenes = SceneLoader.Create();
 
-            Debug.Log("Got here");
-
         }
     }
 }
