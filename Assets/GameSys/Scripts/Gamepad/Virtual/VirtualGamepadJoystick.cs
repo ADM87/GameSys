@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class VirtualGamepadJoystick : MonoBehaviour,

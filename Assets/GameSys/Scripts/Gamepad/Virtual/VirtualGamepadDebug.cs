@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     public class VirtualGamepadDebug : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     public class VirtualGamepad : MonoBehaviour,
         IGamepad

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     public class GamepadButton :
         IGamepadControl, IGamepadButton

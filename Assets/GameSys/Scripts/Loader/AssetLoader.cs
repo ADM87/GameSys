@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace GameSys.Loader
+namespace GameSystems.Loader
 {
     public class AssetLoader
     {

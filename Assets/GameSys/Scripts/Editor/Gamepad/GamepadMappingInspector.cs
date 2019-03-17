@@ -1,9 +1,9 @@
-﻿using GameSys.Gamepad;
+﻿using GameSystems.Gamepad;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace GameSys.Editors.Gamepad
+namespace GameSystems.Editors.Gamepad
 {
     [CustomEditor(typeof(GamepadMapping))]
     public class GamepadMappingInspector : Editor

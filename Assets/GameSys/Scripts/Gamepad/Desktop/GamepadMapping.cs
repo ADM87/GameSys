@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     [CreateAssetMenu(fileName = "GamepadMapping", menuName = "GameSys/Gamepad/GamepadMapping", order = 1)]
     public class GamepadMapping : ScriptableObject

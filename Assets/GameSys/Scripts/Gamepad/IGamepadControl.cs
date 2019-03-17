@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     public delegate void GamepadControlChangeEvent(AxisType axisType, float before, float after);
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     public class Gamepad : 
         IGamepad

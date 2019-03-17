@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     public delegate void VirtualGamepadTouchEvent(TouchPhase touchPhase, Vector3 touchPosition);
 

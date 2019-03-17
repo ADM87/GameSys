@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameSys.Utility
+namespace GameSystems.Utility
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(RectTransform))]

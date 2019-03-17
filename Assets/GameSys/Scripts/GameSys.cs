@@ -1,8 +1,8 @@
-﻿using GameSys.Loader;
-using GameSys.Routines;
+﻿using GameSystems.Loader;
+using GameSystems.Routines;
 using UnityEngine;
- 
-namespace GameSys
+
+namespace GameSystems
 {
     public static class GameSys
     {
@@ -22,12 +22,14 @@ namespace GameSys
         /// <summary>
         /// 
         /// </summary>
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void Boot()
+        public static void Initialize()
         {
             Routines = RoutineRunner.Create();
             Assets = AssetLoader.Create();
             Scenes = SceneLoader.Create();
+
+            Debug.Log("Got here");
+
         }
     }
 }

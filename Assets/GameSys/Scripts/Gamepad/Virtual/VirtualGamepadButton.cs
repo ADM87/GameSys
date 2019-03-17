@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace GameSys.Gamepad
+namespace GameSystems.Gamepad
 {
     public class VirtualGamepadButton : MonoBehaviour,
         IGamepadControl, IGamepadButton
