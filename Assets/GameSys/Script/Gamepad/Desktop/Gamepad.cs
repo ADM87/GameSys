@@ -39,7 +39,7 @@ namespace GameSystems.Gamepad
 
         public void ApplyMapping(GamepadMapping mapping)
         {
-            for (int i = 0; i < mapping.Entries.Length; ++i)
+            for (int i = 0; i < mapping.Entries.Length; i++)
             {
                 IGamepadControl control;
                 if (ControlMap.TryGetValue(mapping.Entries[i].GamepadAxis, out control))

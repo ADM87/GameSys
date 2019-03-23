@@ -12,15 +12,10 @@ namespace GameSystems.Hexagons
         ISerializationCallbackReceiver
     {
         /// <summary> Possible 2D axis types. </summary>
-        public enum Axis { None, XY, XZ, YX, YZ, ZX, ZY };
+        public enum Axis { XY, XZ, YX, YZ, ZX, ZY };
 
         /// <summary> Square root constant of 3. [1.732051f] </summary>
         public const float Sqrt_3 = 1.732051f;
-
-        /// <summary> Angles for a horizontal hexagon: [30, 90, 150, 210, 270, 330] </summary>
-        public static readonly int[] HorizontalAngle = new int[] { 30, 90, 150, 210, 270, 330 };
-        /// <summary> Angles for a vertical hexagon: [0, 60, 120, 180, 240, 300] </summary>
-        public static readonly int[] VerticalAngle = new int[] { 0, 60, 120, 180, 240, 300 };
 
         /// <summary> Orientation of a horizontal layout. </summary>
         public static readonly HexagonMatrix Horizontal = new HexagonMatrix(
@@ -45,10 +40,6 @@ namespace GameSystems.Hexagons
             {
                 switch (value)
                 {
-                    case Hexagon.Orientation.None:
-                        Set(0, 0, 0, 0, 0, 0, 0, 0, 0);
-                        break;
-
                     case Hexagon.Orientation.Horizontal:
                         Set(Horizontal.F0, Horizontal.F1, Horizontal.F2, Horizontal.F3, Horizontal.B0, Horizontal.B1, Horizontal.B2, Horizontal.B3, Horizontal.Angle);
                         break;
@@ -63,9 +54,9 @@ namespace GameSystems.Hexagons
         }
 
         [SerializeField]
-        private float radius;
+        private float cellRadius;
         /// <summary> Size of a hexagon cell. </summary>
-        public float Radius { get { return radius; } }
+        public float CellRadius { get { return cellRadius; } }
 
         [SerializeField]
         private Vector2 origin;
@@ -126,7 +117,7 @@ namespace GameSystems.Hexagons
 
         public void SetRadius(float radius)
         {
-            this.radius = radius;
+            cellRadius = radius;
         }
 
         public void SetOrigin(Vector2 origin)
@@ -137,17 +128,14 @@ namespace GameSystems.Hexagons
         public Vector2 From(Hexagon hexagon)
         {
             return new Vector2(
-                origin.x + (F0 * hexagon.X + F1 * hexagon.Y) * radius,
-                origin.y + (F2 * hexagon.X + F3 * hexagon.Y) * radius    
+                origin.x + (F0 * hexagon.X + F1 * hexagon.Y) * cellRadius,
+                origin.y + (F2 * hexagon.X + F3 * hexagon.Y) * cellRadius
             );
         }
 
         public Hexagon To(Vector2 point)
         {
-            Vector2 delta = point - origin;
-
-            delta.x /= radius;
-            delta.y /= radius;
+            Vector2 delta = (point - origin) / cellRadius;
 
             float fx = B0 * delta.x + B1 * delta.y;
             float fy = B2 * delta.x + B2 * delta.y;
@@ -171,7 +159,7 @@ namespace GameSystems.Hexagons
         public Vector2 CornerOffset(int direction)
         {
             float angle = 2f * Mathf.PI * (Angle + direction) / Hexagon.Edges;
-            return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+            return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * cellRadius;
         }
 
         public void OnBeforeSerialize() { }
@@ -183,7 +171,7 @@ namespace GameSystems.Hexagons
 
         public override string ToString()
         {
-            return "(" + F0 + ", " + F1 + ", " + F2 + ", " + F3 + ", " + B0 + ", " + B1 + ", " + B2 + ", " + B3 + ", " + Angle + ", " + Radius + ")";
+            return "(" + F0 + ", " + F1 + ", " + F2 + ", " + F3 + ", " + B0 + ", " + B1 + ", " + B2 + ", " + B3 + ", " + Angle + ", " + cellRadius + ")";
         }
     }
 }

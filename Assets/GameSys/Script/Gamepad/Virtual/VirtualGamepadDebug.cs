@@ -33,7 +33,7 @@ namespace GameSystems.Gamepad
 
             if (virtualGamepad != null)
             {
-                for (int i = 0; i < debugAxes.Length; ++i)
+                for (int i = 0; i < debugAxes.Length; i++)
                 {
                     debugText.Add(debugAxes[i], debugAxes[i].ToString() + " : 0");
                     virtualGamepad.AddControlListener(debugAxes[i], OnVirtualGamepadControlChange);
@@ -50,7 +50,7 @@ namespace GameSystems.Gamepad
                 debugGamepad.PollInput();
                 if (virtualGamepad != null)
                 {
-                    for (int i = 0; i < debugAxes.Length; ++i)
+                    for (int i = 0; i < debugAxes.Length; i++)
                     {
                         switch (debugAxes[i])
                         {
@@ -106,7 +106,7 @@ namespace GameSystems.Gamepad
             if (debugArea != null)
             {
                 debugArea.text = "";
-                for (int i = 0; i < debugAxes.Length; ++i)
+                for (int i = 0; i < debugAxes.Length; i++)
                 {
                     debugArea.text += debugText[debugAxes[i]] + "\n";
                 }

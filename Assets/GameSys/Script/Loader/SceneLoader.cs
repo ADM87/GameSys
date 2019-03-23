@@ -36,13 +36,13 @@ namespace GameSystems.Loader
         private IEnumerator AsyncLoadRoutine(string[] names, Action<string[]> loadComplete)
         {
             AsyncOperation[] asyncOps = new AsyncOperation[names.Length];
-            for (int i = 0; i < names.Length; ++i)
+            for (int i = 0; i < names.Length; i++)
             {
                 asyncOps[i] = SceneManager.LoadSceneAsync(names[i], LoadSceneMode.Additive);
             }
 
             WaitUntil asyncComplete = new WaitUntil(() => {
-                for (int i = 0; i < asyncOps.Length; ++i)
+                for (int i = 0; i < asyncOps.Length; i++)
                 {
                     if (asyncOps[i].progress < 1)
                     {

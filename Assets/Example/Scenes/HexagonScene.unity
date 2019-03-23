@@ -190,7 +190,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851881174}
-  - component: {fileID: 851881175}
   m_Layer: 0
   m_Name: '[Root]'
   m_TagString: Untagged
@@ -211,27 +210,10 @@ Transform:
   m_Children:
   - {fileID: 1084091068}
   - {fileID: 276910203}
+  - {fileID: 1128436538}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &851881175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851881173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b6cc2dcdf8190c46b679a2da29168fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hexagon:
-    x: 0
-    y: 0
-    z: 0
-  matrix:
-    orientation: 1
 --- !u!1 &1084091065
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,3 +296,326 @@ Transform:
   m_Father: {fileID: 851881174}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1128436537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1128436538}
+  - component: {fileID: 1128436539}
+  m_Layer: 0
+  m_Name: HexGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1128436538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128436537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 851881174}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1128436539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128436537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afe246b54a509b429604615bd1a6077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualize: 0
+  gridBuilder: {fileID: 11400000, guid: 6e31a8a12c50cf449b037d4422e23d5b, type: 2}
+  matrix:
+    orientation: 0
+    cellRadius: 0
+    origin: {x: 0, y: 0}
+  hexagons:
+  - x: -5
+    y: 0
+    z: 5
+  - x: -5
+    y: 1
+    z: 4
+  - x: -5
+    y: 2
+    z: 3
+  - x: -5
+    y: 3
+    z: 2
+  - x: -5
+    y: 4
+    z: 1
+  - x: -5
+    y: 5
+    z: 0
+  - x: -4
+    y: -1
+    z: 5
+  - x: -4
+    y: 0
+    z: 4
+  - x: -4
+    y: 1
+    z: 3
+  - x: -4
+    y: 2
+    z: 2
+  - x: -4
+    y: 3
+    z: 1
+  - x: -4
+    y: 4
+    z: 0
+  - x: -4
+    y: 5
+    z: -1
+  - x: -3
+    y: -2
+    z: 5
+  - x: -3
+    y: -1
+    z: 4
+  - x: -3
+    y: 0
+    z: 3
+  - x: -3
+    y: 1
+    z: 2
+  - x: -3
+    y: 2
+    z: 1
+  - x: -3
+    y: 3
+    z: 0
+  - x: -3
+    y: 4
+    z: -1
+  - x: -3
+    y: 5
+    z: -2
+  - x: -2
+    y: -3
+    z: 5
+  - x: -2
+    y: -2
+    z: 4
+  - x: -2
+    y: -1
+    z: 3
+  - x: -2
+    y: 0
+    z: 2
+  - x: -2
+    y: 1
+    z: 1
+  - x: -2
+    y: 2
+    z: 0
+  - x: -2
+    y: 3
+    z: -1
+  - x: -2
+    y: 4
+    z: -2
+  - x: -2
+    y: 5
+    z: -3
+  - x: -1
+    y: -4
+    z: 5
+  - x: -1
+    y: -3
+    z: 4
+  - x: -1
+    y: -2
+    z: 3
+  - x: -1
+    y: -1
+    z: 2
+  - x: -1
+    y: 0
+    z: 1
+  - x: -1
+    y: 1
+    z: 0
+  - x: -1
+    y: 2
+    z: -1
+  - x: -1
+    y: 3
+    z: -2
+  - x: -1
+    y: 4
+    z: -3
+  - x: -1
+    y: 5
+    z: -4
+  - x: 0
+    y: -5
+    z: 5
+  - x: 0
+    y: -4
+    z: 4
+  - x: 0
+    y: -3
+    z: 3
+  - x: 0
+    y: -2
+    z: 2
+  - x: 0
+    y: -1
+    z: 1
+  - x: 0
+    y: 0
+    z: 0
+  - x: 0
+    y: 1
+    z: -1
+  - x: 0
+    y: 2
+    z: -2
+  - x: 0
+    y: 3
+    z: -3
+  - x: 0
+    y: 4
+    z: -4
+  - x: 0
+    y: 5
+    z: -5
+  - x: 1
+    y: -5
+    z: 4
+  - x: 1
+    y: -4
+    z: 3
+  - x: 1
+    y: -3
+    z: 2
+  - x: 1
+    y: -2
+    z: 1
+  - x: 1
+    y: -1
+    z: 0
+  - x: 1
+    y: 0
+    z: -1
+  - x: 1
+    y: 1
+    z: -2
+  - x: 1
+    y: 2
+    z: -3
+  - x: 1
+    y: 3
+    z: -4
+  - x: 1
+    y: 4
+    z: -5
+  - x: 2
+    y: -5
+    z: 3
+  - x: 2
+    y: -4
+    z: 2
+  - x: 2
+    y: -3
+    z: 1
+  - x: 2
+    y: -2
+    z: 0
+  - x: 2
+    y: -1
+    z: -1
+  - x: 2
+    y: 0
+    z: -2
+  - x: 2
+    y: 1
+    z: -3
+  - x: 2
+    y: 2
+    z: -4
+  - x: 2
+    y: 3
+    z: -5
+  - x: 3
+    y: -5
+    z: 2
+  - x: 3
+    y: -4
+    z: 1
+  - x: 3
+    y: -3
+    z: 0
+  - x: 3
+    y: -2
+    z: -1
+  - x: 3
+    y: -1
+    z: -2
+  - x: 3
+    y: 0
+    z: -3
+  - x: 3
+    y: 1
+    z: -4
+  - x: 3
+    y: 2
+    z: -5
+  - x: 4
+    y: -5
+    z: 1
+  - x: 4
+    y: -4
+    z: 0
+  - x: 4
+    y: -3
+    z: -1
+  - x: 4
+    y: -2
+    z: -2
+  - x: 4
+    y: -1
+    z: -3
+  - x: 4
+    y: 0
+    z: -4
+  - x: 4
+    y: 1
+    z: -5
+  - x: 5
+    y: -5
+    z: 0
+  - x: 5
+    y: -4
+    z: -1
+  - x: 5
+    y: -3
+    z: -2
+  - x: 5
+    y: -2
+    z: -3
+  - x: 5
+    y: -1
+    z: -4
+  - x: 5
+    y: 0
+    z: -5

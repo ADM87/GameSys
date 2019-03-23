@@ -12,7 +12,7 @@ namespace GameSystems.Hexagons
     public struct Hexagon
     {
         /// <summary> Hexagon orientation types. Horizontal = pointy topped; Vertical = flat topped. </summary>
-        public enum Orientation { None, Horizontal, Vertical };
+        public enum Orientation { Horizontal, Vertical };
 
         /// <summary> Number of edges in a hexagon. </summary>
         public const int Edges = 6;
@@ -40,6 +40,11 @@ namespace GameSystems.Hexagons
             new Hexagon(0, 1, -1), new Hexagon(1, 0, -1), new Hexagon(1, -1, 0),
             new Hexagon(0, -1, 1), new Hexagon(-1, 0, 1), new Hexagon(-1, 1, 0)
         };
+
+        /// <summary> Angles for a horizontal hexagon: [30, 90, 150, 210, 270, 330] </summary>
+        public static readonly int[] HorizontalAngle = new int[] { 30, 90, 150, 210, 270, 330 };
+        /// <summary> Angles for a vertical hexagon: [0, 60, 120, 180, 240, 300] </summary>
+        public static readonly int[] VerticalAngle = new int[] { 0, 60, 120, 180, 240, 300 };
 
         [SerializeField]
         private int x;
