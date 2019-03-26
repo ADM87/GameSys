@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f11771daf7c69479cd12b031c15e1c, type: 3}
-  m_Name: RectangleGridBuilder
+  m_Script: {fileID: 11500000, guid: 9eb1a57d3e741bb4b8c53fee5cd1400c, type: 3}
+  m_Name: RhombusGridBuilder
   m_EditorClassIdentifier: 
+  size: {x: 100, y: 5}
   axis: 0
-  size: {x: 5, y: 5}

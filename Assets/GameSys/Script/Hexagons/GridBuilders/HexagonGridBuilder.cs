@@ -13,10 +13,10 @@ namespace GameSystems.Hexagons.GridBuilders
         {
             List<Hexagon> grid = new List<Hexagon>();
 
-            for (int x = -size; x <= size; x++)
+            for (int x = -size + 1; x < size; x++)
             {
-                int y1 = Mathf.Max(-size, -x - size);
-                int y2 = Mathf.Min(size, -x + size);
+                int y1 = Mathf.Max(-size, -x - size) + 1;
+                int y2 = Mathf.Min(size, -x + size) - 1;
                 for (int y = y1; y <= y2; y++)
                 {
                     grid.Add(new Hexagon(x, y));

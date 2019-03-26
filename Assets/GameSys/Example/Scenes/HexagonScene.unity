@@ -339,85 +339,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afe246b54a509b429604615bd1a6077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualize: 0
+  visualize: 1
+  showCoordinates: 0
   gridBuilder: {fileID: 11400000, guid: 6e31a8a12c50cf449b037d4422e23d5b, type: 2}
   matrix:
     orientation: 0
-    cellRadius: 0
+    cellRadius: 1
     origin: {x: 0, y: 0}
   hexagons:
-  - x: -5
-    y: 0
-    z: 5
-  - x: -5
-    y: 1
-    z: 4
-  - x: -5
-    y: 2
-    z: 3
-  - x: -5
-    y: 3
-    z: 2
-  - x: -5
-    y: 4
-    z: 1
-  - x: -5
-    y: 5
-    z: 0
-  - x: -4
-    y: -1
-    z: 5
-  - x: -4
-    y: 0
-    z: 4
-  - x: -4
-    y: 1
-    z: 3
-  - x: -4
-    y: 2
-    z: 2
-  - x: -4
-    y: 3
-    z: 1
-  - x: -4
-    y: 4
-    z: 0
-  - x: -4
-    y: 5
-    z: -1
-  - x: -3
-    y: -2
-    z: 5
-  - x: -3
-    y: -1
-    z: 4
-  - x: -3
-    y: 0
-    z: 3
-  - x: -3
-    y: 1
-    z: 2
-  - x: -3
-    y: 2
-    z: 1
-  - x: -3
-    y: 3
-    z: 0
-  - x: -3
-    y: 4
-    z: -1
-  - x: -3
-    y: 5
-    z: -2
-  - x: -2
-    y: -3
-    z: 5
-  - x: -2
-    y: -2
-    z: 4
-  - x: -2
-    y: -1
-    z: 3
   - x: -2
     y: 0
     z: 2
@@ -427,24 +356,6 @@ MonoBehaviour:
   - x: -2
     y: 2
     z: 0
-  - x: -2
-    y: 3
-    z: -1
-  - x: -2
-    y: 4
-    z: -2
-  - x: -2
-    y: 5
-    z: -3
-  - x: -1
-    y: -4
-    z: 5
-  - x: -1
-    y: -3
-    z: 4
-  - x: -1
-    y: -2
-    z: 3
   - x: -1
     y: -1
     z: 2
@@ -457,24 +368,6 @@ MonoBehaviour:
   - x: -1
     y: 2
     z: -1
-  - x: -1
-    y: 3
-    z: -2
-  - x: -1
-    y: 4
-    z: -3
-  - x: -1
-    y: 5
-    z: -4
-  - x: 0
-    y: -5
-    z: 5
-  - x: 0
-    y: -4
-    z: 4
-  - x: 0
-    y: -3
-    z: 3
   - x: 0
     y: -2
     z: 2
@@ -490,24 +383,6 @@ MonoBehaviour:
   - x: 0
     y: 2
     z: -2
-  - x: 0
-    y: 3
-    z: -3
-  - x: 0
-    y: 4
-    z: -4
-  - x: 0
-    y: 5
-    z: -5
-  - x: 1
-    y: -5
-    z: 4
-  - x: 1
-    y: -4
-    z: 3
-  - x: 1
-    y: -3
-    z: 2
   - x: 1
     y: -2
     z: 1
@@ -520,24 +395,6 @@ MonoBehaviour:
   - x: 1
     y: 1
     z: -2
-  - x: 1
-    y: 2
-    z: -3
-  - x: 1
-    y: 3
-    z: -4
-  - x: 1
-    y: 4
-    z: -5
-  - x: 2
-    y: -5
-    z: 3
-  - x: 2
-    y: -4
-    z: 2
-  - x: 2
-    y: -3
-    z: 1
   - x: 2
     y: -2
     z: 0
@@ -547,75 +404,3 @@ MonoBehaviour:
   - x: 2
     y: 0
     z: -2
-  - x: 2
-    y: 1
-    z: -3
-  - x: 2
-    y: 2
-    z: -4
-  - x: 2
-    y: 3
-    z: -5
-  - x: 3
-    y: -5
-    z: 2
-  - x: 3
-    y: -4
-    z: 1
-  - x: 3
-    y: -3
-    z: 0
-  - x: 3
-    y: -2
-    z: -1
-  - x: 3
-    y: -1
-    z: -2
-  - x: 3
-    y: 0
-    z: -3
-  - x: 3
-    y: 1
-    z: -4
-  - x: 3
-    y: 2
-    z: -5
-  - x: 4
-    y: -5
-    z: 1
-  - x: 4
-    y: -4
-    z: 0
-  - x: 4
-    y: -3
-    z: -1
-  - x: 4
-    y: -2
-    z: -2
-  - x: 4
-    y: -1
-    z: -3
-  - x: 4
-    y: 0
-    z: -4
-  - x: 4
-    y: 1
-    z: -5
-  - x: 5
-    y: -5
-    z: 0
-  - x: 5
-    y: -4
-    z: -1
-  - x: 5
-    y: -3
-    z: -2
-  - x: 5
-    y: -2
-    z: -3
-  - x: 5
-    y: -1
-    z: -4
-  - x: 5
-    y: 0
-    z: -5
