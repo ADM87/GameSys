@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb1a57d3e741bb4b8c53fee5cd1400c, type: 3}
   m_Name: RhombusGridBuilder
   m_EditorClassIdentifier: 
-  size: {x: 100, y: 5}
+  size: {x: 5, y: 5}
   axis: 0

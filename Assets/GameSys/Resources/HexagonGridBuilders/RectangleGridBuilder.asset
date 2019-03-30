@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f11771daf7c69479cd12b031c15e1c, type: 3}
   m_Name: RectangleGridBuilder
   m_EditorClassIdentifier: 
-  size: {x: 10, y: 5}
+  size: {x: 5, y: 5}
   axis: 0

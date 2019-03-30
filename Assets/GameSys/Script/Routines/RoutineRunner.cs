@@ -6,7 +6,7 @@ namespace GameSystems.Routines
     public class RoutineRunner : MonoBehaviour
     {
         private static RoutineRunner instance;
-        public static RoutineRunner Create()
+        public static RoutineRunner GetInstance()
         {
             if (instance == null)
             {
@@ -22,7 +22,7 @@ namespace GameSystems.Routines
         {
             if (instance != null)
             {
-                Debug.LogError("[RoutineRunner] Detected multiple RoutineRunners. Use GameSys.RoutineRunner or RoutineRunner.Create() to get the instance of the RoutineRunner.");
+                Debug.LogError("[RoutineRunner] Detected multiple RoutineRunners. Use GameSys.Routines or RoutineRunner.GetInstance() to get the instance of the RoutineRunner.");
                 DestroyImmediate(gameObject);
             }
         }
@@ -30,6 +30,20 @@ namespace GameSystems.Routines
         public Coroutine Run(IEnumerator routine)
         {
             return StartCoroutine(routine);
+        }
+
+        public bool Stop(Coroutine routine)
+        {
+            try
+            {
+                StopCoroutine(routine);
+                return true;
+            }
+            catch
+            {
+                Debug.Log("[RoutineRunner] Failed to stop coroutine.");
+                return false;
+            }
         }
     }
 }

@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualize: 1
-  showCoordinates: 0
+  showCoordinates: 1
   gridBuilder: {fileID: 11400000, guid: 6e31a8a12c50cf449b037d4422e23d5b, type: 2}
   matrix:
     orientation: 0

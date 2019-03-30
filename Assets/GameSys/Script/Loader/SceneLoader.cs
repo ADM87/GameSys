@@ -8,7 +8,7 @@ namespace GameSystems.Loader
     public class SceneLoader
     {
         private static SceneLoader instance;
-        public static SceneLoader Create()
+        public static SceneLoader GetInstance()
         {
             return instance ?? (instance = new SceneLoader());
         }
@@ -33,6 +33,7 @@ namespace GameSystems.Loader
 
             loadComplete?.Invoke(name);
         }
+
         private IEnumerator AsyncLoadRoutine(string[] names, Action<string[]> loadComplete)
         {
             AsyncOperation[] asyncOps = new AsyncOperation[names.Length];

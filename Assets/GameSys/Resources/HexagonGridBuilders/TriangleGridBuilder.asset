@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8207a449f72bec48acd02f9fa139dea, type: 3}
   m_Name: TriangleGridBuilder
   m_EditorClassIdentifier: 
-  size: 4
+  size: 2
