@@ -1,4 +1,4 @@
-﻿using GameSystems.Routines;
+using GameSystems.Routines;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -20,13 +20,13 @@ namespace GameSystems.Assets
             routineRunner = RoutineRunner.GetInstance();
         }
 
-        private AssetLoader LoadAssetAsync<T>(string path, Action<T> loadComplete)
+        public AssetLoader LoadAssetAsync<T>(string path, Action<T> loadComplete)
         {
             routineRunner.Run(AsyncLoadRoutine(path, false, loadComplete));
             return this;
         }
 
-        private AssetLoader LoadAssetAsync<T>(string path, bool addToCache, Action<T> loadComplete)
+        public AssetLoader LoadAssetAsync<T>(string path, bool addToCache, Action<T> loadComplete)
         {
             routineRunner.Run(AsyncLoadRoutine(path, addToCache, loadComplete));
             return this;
@@ -37,7 +37,7 @@ namespace GameSystems.Assets
             Type assetType = typeof(T);
             ResourceRequest request = Resources.LoadAsync(path, assetType);
 
-            WaitUntil requestComplete = new WaitUntil(() => Mathf.Approximately(request.progress, 1f));
+            WaitUntil requestComplete = new WaitUntil(() => request.progress >= 1f);
             yield return requestComplete;
 
             try
