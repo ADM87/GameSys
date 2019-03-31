@@ -15,11 +15,11 @@ namespace GameSystems.Loader
 
         private SceneLoader() { }
 
-        public void AsyncSceneLoad(string name, Action<string> loadComplete)
+        public void LoadSceneAsync(string name, Action<string> loadComplete)
         {
             GameSys.Routines.Run(AsyncLoadRoutine(name, loadComplete));
         }
-        public void AsyncSceneLoad(string[] names, Action<string[]> loadComplete)
+        public void LoadSceneAsync(string[] names, Action<string[]> loadComplete)
         {
             GameSys.Routines.Run(AsyncLoadRoutine(names, loadComplete));
         }
@@ -42,15 +42,14 @@ namespace GameSystems.Loader
                 asyncOps[i] = SceneManager.LoadSceneAsync(names[i], LoadSceneMode.Additive);
             }
 
+            // Wait until all scenes are loaded.
             WaitUntil asyncComplete = new WaitUntil(() => {
+                float totalProgress = 0;
                 for (int i = 0; i < asyncOps.Length; i++)
                 {
-                    if (asyncOps[i].progress < 1)
-                    {
-                        return false;
-                    }
+                    totalProgress += asyncOps[i].progress;
                 }
-                return true;
+                return totalProgress / asyncOps.Length >= 1f;
             });
             yield return asyncComplete;
 
