@@ -1,0 +1,16 @@
+{
+    "name": "ADM87.GameSys.Editors",
+    "references": [
+        "ADM87.GameSys"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
