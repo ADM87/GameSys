@@ -1,4 +1,5 @@
-﻿using GameSystems.Assets;
+﻿using GameSys.Commands;
+using GameSystems.Assets;
 using GameSystems.Routines;
 using GameSystems.Scenes;
 
@@ -18,6 +19,10 @@ namespace GameSystems
         /// Scene management helper for loading and unloading scenes.
         /// </summary>
         public static SceneLoader Scenes { get; private set; }
+        /// <summary>
+        /// Command registry for executing game wide commands.
+        /// </summary>
+        public static CommandRegistry Commands { get; private set; }
 
         /// <summary>
         /// Initialize the core game systems.
@@ -27,6 +32,7 @@ namespace GameSystems
             Routines = RoutineRunner.GetInstance();
             Assets = AssetLoader.GetInstance();
             Scenes = SceneLoader.GetInstance();
+            Commands = CommandRegistry.GetInstance();
         }
     }
 }
