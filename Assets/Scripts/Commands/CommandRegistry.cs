@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSys.Commands
+namespace GameSystems.Commands
 {
     public class CommandRegistry
     {

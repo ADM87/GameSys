@@ -1,4 +1,4 @@
-﻿namespace GameSys.Commands
+﻿namespace GameSystems.Commands
 {
     public interface ICommand
     {
