@@ -4,11 +4,20 @@ namespace GameSystems.AStar
 {
     public class AStarSystem : MonoBehaviour
     {
-        [Header("Grid")]
+        public enum GridLayout
+        {
+            Cartesian, Hexagonal 
+        }
+
+        [SerializeField]
+        private GridLayout layout;
+        private GridLayout lastSelectedLayout;
+
         [SerializeField]
         private bool showGrid;
         [SerializeField]
         private bool showBorder;
+
         [SerializeField]
         private uint gridWidth;
         [SerializeField]
@@ -16,7 +25,6 @@ namespace GameSystems.AStar
         [SerializeField]
         private float gridSpacing;
 
-        [Header("Collision")]
         [SerializeField]
         private bool showNodes;
         [SerializeField]
@@ -25,37 +33,82 @@ namespace GameSystems.AStar
         private float collisionBuffer;
 
         [SerializeField, HideInInspector]
-        private AStarNode[,] nodeMap;
+        private AStarNode[] nodeMap;
 
         public void BuildNodeMap()
         {
-            nodeMap = new AStarNode[gridWidth, gridHeight];
-            if (gridWidth > 0 && gridHeight > 0)
+            if (layout == GridLayout.Cartesian)
             {
-                float offset = gridSpacing / 2f;
-                Vector3 nodeSize = new Vector3(gridSpacing, gridSpacing, gridSpacing) * collisionBuffer;
-
-                for (int x = 0; x < gridWidth; x++)
-                {
-                    for (int y = 0; y < gridHeight; y++)
-                    {
-                        Vector3 position = transform.position;
-                        position.x += (x * gridSpacing) + offset;
-                        position.z -= (y * gridSpacing) + offset;
-
-                        bool collision = Physics.CheckBox(position, nodeSize / 2f, Quaternion.identity, collisionLayers);
-                        nodeMap[x, y] = new AStarNode(position, !collision);
-                    }
-                }
+                BuildCartesianNodeMap();
+            }
+            else if (layout == GridLayout.Hexagonal)
+            {
+                BuildHexagonalNodeMap();
             }
         }
 
         private void OnValidate()
         {
             gridSpacing = Mathf.Max(gridSpacing, 0);
+
+            if (lastSelectedLayout != layout)
+            {
+                lastSelectedLayout = layout;
+                nodeMap = null;
+            }
         }
 
         private void OnDrawGizmos()
+        {
+            if (layout == GridLayout.Cartesian)
+            {
+                DrawCartesianGizmo();
+            }
+            else if (layout == GridLayout.Hexagonal)
+            {
+                DrawHexagonalGizmo();
+            }
+
+            if (showNodes && nodeMap != null && nodeMap.Length > 0)
+            {
+                for (int i = 0; i < nodeMap.Length; i++)
+                {
+                    Gizmos.color = nodeMap[i].Walkable ? Color.white : Color.red;
+                    Gizmos.DrawSphere(nodeMap[i].Position, gridSpacing * 0.45f);
+                }
+            }
+        }
+
+        private void BuildCartesianNodeMap()
+        {
+            nodeMap = new AStarNode[gridWidth * gridHeight];
+            if (gridWidth > 0 && gridHeight > 0)
+            {
+                float offset = gridSpacing / 2f;
+                Vector3 nodeSize = new Vector3(gridSpacing, gridSpacing, gridSpacing) * collisionBuffer;
+
+                uint length = gridWidth * gridHeight;
+                for (int i = 0; i < length; i++)
+                {
+                    float x = i % gridWidth;
+                    float y = -1 * ((x % gridWidth) - i) / gridWidth;
+
+                    Vector3 position = transform.position;
+                    position.x += (x * gridSpacing) + offset;
+                    position.z -= (y * gridSpacing) + offset;
+
+                    bool collision = Physics.CheckBox(position, nodeSize / 2f, Quaternion.identity, collisionLayers);
+                    nodeMap[i] = new AStarNode(position, !collision);
+                }
+            }
+        }
+
+        private void BuildHexagonalNodeMap()
+        {
+
+        }
+
+        private void DrawCartesianGizmo()
         {
             if ((showGrid || showBorder) && gridWidth > 0 && gridHeight > 0 && gridSpacing > 0)
             {
@@ -77,7 +130,7 @@ namespace GameSystems.AStar
                     Gizmos.DrawLine(bottomRight, bottomLeft);
                     Gizmos.DrawLine(bottomLeft, transform.position);
                 }
-                
+
                 if (showGrid)
                 {
                     Gizmos.color = new Color(1, 1, 1, 0.5f);
@@ -93,23 +146,11 @@ namespace GameSystems.AStar
                     }
                 }
             }
+        }
 
-            if (showNodes && nodeMap != null && nodeMap.GetLength(0) > 0 && nodeMap.GetLength(1) > 0)
-            {
-                int xLength = nodeMap.GetLength(0);
-                int yLength = nodeMap.GetLength(1);
+        private void DrawHexagonalGizmo()
+        {
 
-                Vector3 nodeSize = new Vector3(gridSpacing, 0, gridSpacing) * 0.75f;
-
-                for (int x = 0; x < xLength; x++)
-                {
-                    for (int y = 0; y < yLength; y++)
-                    {
-                        Gizmos.color = nodeMap[x, y].Walkable ? Color.white : Color.red;
-                        Gizmos.DrawCube(nodeMap[x, y].Position, nodeSize);
-                    }
-                }
-            }
         }
     }
 }
