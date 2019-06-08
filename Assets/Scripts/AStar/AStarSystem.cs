@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using GameSystems.Hexagons;
+using GameSystems.Hexagons.GridBuilders;
+using UnityEngine;
 
 namespace GameSystems.AStar
 {
@@ -26,6 +28,11 @@ namespace GameSystems.AStar
         private float gridSpacing;
 
         [SerializeField]
+        private GridBuilder gridBuilder;
+        [SerializeField]
+        private HexagonMatrix matrix;
+
+        [SerializeField]
         private bool showNodes;
         [SerializeField]
         private LayerMask collisionLayers;
@@ -34,6 +41,10 @@ namespace GameSystems.AStar
 
         [SerializeField, HideInInspector]
         private AStarNode[] nodeMap;
+        [SerializeField, HideInInspector]
+        private Hexagon[] hexagons;
+
+        public GridLayout Layout { get { return layout; } }
 
         public void BuildNodeMap()
         {
@@ -45,6 +56,19 @@ namespace GameSystems.AStar
             {
                 BuildHexagonalNodeMap();
             }
+        }
+
+        public void BuildHexagonGrid()
+        {
+            if (gridBuilder != null)
+            {
+                hexagons = gridBuilder.Build();
+            }
+        }
+
+        public void ClearNodeMap()
+        {
+            nodeMap = null;
         }
 
         private void OnValidate()
@@ -105,7 +129,31 @@ namespace GameSystems.AStar
 
         private void BuildHexagonalNodeMap()
         {
+            if (gridBuilder != null && matrix.CellRadius > 0)
+            {
+                if (hexagons == null || hexagons.Length == 0)
+                {
+                    Debug.Log("Be sure to select 'Build Hexagon Grid' before updating the node map for a hexagonal layout");
+                    return;
+                }
 
+                hexagons = gridBuilder.Build();
+                nodeMap = new AStarNode[hexagons.Length];
+
+                float nodeSize = matrix.CellRadius * collisionBuffer;
+
+                for (int i = 0; i < nodeMap.Length; i++)
+                {
+                    Vector3 position = transform.position;
+                    Vector2 center = matrix.From(hexagons[i]);
+
+                    position.x += center.x;
+                    position.z += center.y;
+
+                    bool collision = Physics.CheckSphere(position, nodeSize, collisionLayers);
+                    nodeMap[i] = new AStarNode(position, !collision);
+                }
+            }
         }
 
         private void DrawCartesianGizmo()
@@ -150,7 +198,33 @@ namespace GameSystems.AStar
 
         private void DrawHexagonalGizmo()
         {
+            if (showGrid && matrix.CellRadius > 0 && hexagons != null && hexagons.Length > 0)
+            {
+                Gizmos.color = new Color(1, 1, 1, 0.5f);
 
+                for (int i = 0; i < hexagons.Length; i++)
+                {
+                    Vector2 center = matrix.From(hexagons[i]);
+                    Vector2 corner = matrix.CornerOffset(0);
+                    Vector3 start = transform.position;
+
+                    start.x += center.x + corner.x;
+                    start.z += center.y + corner.y;
+
+                    for (int j = 1; j <= Hexagon.Edges; j++)
+                    {
+                        Vector3 end = transform.position;
+                        corner = matrix.CornerOffset(j);
+
+                        end.x += center.x + corner.x;
+                        end.z += center.y + corner.y;
+
+                        Gizmos.DrawLine(start, end);
+
+                        start = end;
+                    }
+                }
+            }
         }
     }
 }

@@ -66,18 +66,18 @@ namespace GameSystems.Hexagons
                     {
                         GUIContent label = new GUIContent(hexagons[i].ToString());
                         
-                        float x = transform.position.x + center.x + matrix.Origin.x;
-                        float y = transform.position.y + center.y + matrix.Origin.y;
+                        float x = transform.position.x + center.x;
+                        float y = transform.position.y + center.y;
 
                         Handles.Label(new Vector3(x, y, transform.position.z), label, style);
                     }
 
                     if (visualize)
                     {
-                        Vector3 start = matrix.Origin + center + matrix.CornerOffset(0);
+                        Vector3 start = center + matrix.CornerOffset(0);
                         for (int j = 1; j <= Hexagon.Edges; j++)
                         {
-                            Vector3 end = matrix.Origin + matrix.From(hexagons[i]) + matrix.CornerOffset(j);
+                            Vector3 end = matrix.From(hexagons[i]) + matrix.CornerOffset(j);
 
                             Gizmos.DrawLine(transform.position + start, transform.position + end);
 

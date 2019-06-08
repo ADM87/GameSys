@@ -11,11 +11,26 @@ namespace GameSystems.Editors
         {
             base.OnInspectorGUI();
 
+            AStarSystem aStarSystem = (AStarSystem)target;
+
+            if (aStarSystem.Layout == AStarSystem.GridLayout.Hexagonal)
+            {
+                if (GUILayout.Button("Build Hexagon Grid"))
+                {
+                    aStarSystem.BuildHexagonGrid();
+                    EditorUtility.SetDirty(target);
+                }
+            }
+
             if (GUILayout.Button("Update Nodes"))
             {
-                AStarSystem aStarSystem = (AStarSystem)target;
                 aStarSystem.BuildNodeMap();
+                EditorUtility.SetDirty(target);
+            }
 
+            if (GUILayout.Button("Clear Nodes"))
+            {
+                aStarSystem.ClearNodeMap();
                 EditorUtility.SetDirty(target);
             }
         }
